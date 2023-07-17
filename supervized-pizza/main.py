@@ -31,7 +31,7 @@ def loss(X, Y, w):
     return np.average(squared_error)
 
 
-def train (X, Y ,iterations, lr ): # lr is the short from for learning rate
+def train (X, Y ,iterations, lr ): # lr is the short form for learning rate
     """Train the model using gradient descent"""
     w = 0
     for i in range(iterations):
