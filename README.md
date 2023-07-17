@@ -1,5 +1,3 @@
-Certainly! Here's a more professional version of the README.md:
-
 # Perceptron
 
 This project utilizes Conda as the package and environment manager. For detailed information on Conda, please refer to the official documentation: [https://docs.conda.io/en/latest/](https://docs.conda.io/en/latest/)
