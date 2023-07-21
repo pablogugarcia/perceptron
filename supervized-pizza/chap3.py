@@ -15,21 +15,30 @@ def loss(X, Y, w, b):
     return np.average(squared_error)
 
 
-def gradient(X, Y, w):
-    return 2 * np.average(X * (predict(X, w, 0) - Y))
+def gradient(X, Y, w, b):
+    w_gradient = 2 * np.average(X * (predict(X, w, 0) - Y))
+    b_gradient = 2 * np.average(predict(X, w, b) - Y)
+    return (w_gradient, b_gradient)
 
 
 def train(X, Y, iterations, lr):
-    w = 0
+    w = b = 0
     for i in range(iterations):
         current_loss = loss(X, Y, w, 0)
         print(f"Iteration {i:4d} => Loss: {current_loss:.6f}")
 
-        w -= gradient(X, Y, w) * lr
-    return w
+        w_gradient, b_gradient = gradient(X, Y, w, b)
+        w -= w_gradient * lr
+        b -= b_gradient * lr
+
+    return w, b
 
 
 X, Y = np.loadtxt("pizza.txt", skiprows=1, unpack=True)
 
-w = train(X, Y, iterations=100, lr=0.001)
-print(f"w={w:.10f}")
+w, b = train(X, Y, iterations=100, lr=0.001)
+print(f"w={w:.10f}, b={b:10f}")
+
+x = 20
+y = predict(x, w, b)
+print(f"Prediction: x={x} => y={y:.2f}")
