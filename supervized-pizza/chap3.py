@@ -16,7 +16,7 @@ def loss(X, Y, w, b):
 
 
 def gradient(X, Y, w, b):
-    w_gradient = 2 * np.average(X * (predict(X, w, 0) - Y))
+    w_gradient = 2 * np.average(X * (predict(X, w, b) - Y))
     b_gradient = 2 * np.average(predict(X, w, b) - Y)
     return (w_gradient, b_gradient)
 
@@ -36,7 +36,7 @@ def train(X, Y, iterations, lr):
 
 X, Y = np.loadtxt("pizza.txt", skiprows=1, unpack=True)
 
-w, b = train(X, Y, iterations=100, lr=0.001)
+w, b = train(X, Y, iterations=20000, lr=0.001)
 print(f"w={w:.10f}, b={b:10f}")
 
 x = 20
